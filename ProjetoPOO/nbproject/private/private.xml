@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/projeto/Cadastro.java</file>
-            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/projeto/Bebida.java</file>
-            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/projeto/Produto.java</file>
-            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/projeto/Alimento.java</file>
-            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/projeto/Mercadinho.java</file>
-            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/projeto/Limpeza.java</file>
+            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/controle/ControleCadastros.java</file>
+            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/visao/App.java</file>
+            <file>file:/C:/Users/weslley/Documents/NetBeansProjects/ProjetoPOO/src/modelo/Alimento.java</file>
         </group>
     </open-files>
 </project-private>
