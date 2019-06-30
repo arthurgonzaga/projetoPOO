@@ -1,7 +1,10 @@
-
 package modelo;
+
+import modelo.*;
+
 interface Cadastro {
-     boolean incluirProduto(Produto var1);
+
+    boolean incluirProduto(Produto var1);
 
     Produto consultar(int var1);
 
@@ -17,4 +20,3 @@ interface Cadastro {
 
     Produto[] vencido();
 }
-

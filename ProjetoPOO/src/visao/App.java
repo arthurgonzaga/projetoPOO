@@ -9,24 +9,34 @@ import java.util.Scanner;
 public class App {
 
     private static Scanner entrada;
+    private static Produto produto;
+    private static boolean continua;
+    private static ControleCadastros controleCadastros;
+    private static Mercadinho mercadinho;
+
 
     public static void main(String[] args) {
-        Produto produto;
         entrada = new Scanner(System.in);
-        ControleCadastros controleCadastros = new ControleCadastros();
-        Mercadinho Mercadinho = controleCadastros.cadastraMercadinhoProprietario();
-        boolean continua = true;
+        controleCadastros = new ControleCadastros();
+        mercadinho = controleCadastros.cadastraMercadinhoProprietario();
+        continua = true;
         limpaTela();
         while(continua) {
-            logoMercado(Mercadinho);
+            //logoMercado(Mercadinho);
             System.out.println("[1] CADASTRAR PRODUTO\n[2] BUSCAR PRODUTO\n[3] REMOVER PRODUTO\n[4] ALTERAR" +
                     " PRODUTO\n[5] QUATIDADE DE PRODUTOS CADASTRADOS\n[6] PRODUTO MAIS ANTIGO NO ESTOQUE\n" +
                     "[7] PRODUTOS VENCIDOS\n[8] ENCERRAR");
             int escolha = entrada.nextInt();
-            switch (escolha) {
+            escolher(escolha);
+        }
+
+    }
+
+    private static void escolher(int escolha){
+        switch (escolha) {
                 case 1: {
-                    Produto p = controleCadastros.cadastraDadosProduto(Mercadinho);
-                    if(Mercadinho.incluirProduto(p)){
+                    Produto produto = controleCadastros.cadastraDadosProduto(mercadinho);
+                    if(mercadinho.incluirProduto(produto)){
                         System.out.println("Produto cadastrado com sucesso");
                     }else{
                         System.out.println("Estoque cheio");
@@ -36,7 +46,7 @@ public class App {
                 case 2: {
                     System.out.println("Informe o codigo do produto");
                     int codigo = entrada.nextInt();
-                    produto = Mercadinho.consultarProduto(codigo);
+                    produto = mercadinho.consultarProduto(codigo);
                     if (produto == null) {
                         System.out.println("Produto não existe");
                     } else {
@@ -47,7 +57,7 @@ public class App {
                 case 3: {
                     System.out.println("Informe o codigo do produto:");
                     int codigo = entrada.nextInt();
-                    if (Mercadinho.removerestoque(codigo)) {
+                    if (mercadinho.removerEstoque(codigo)) {
                         System.out.println("Produto removido com sucesso");
                     } else {
                         System.out.println("Produto não existe");
@@ -58,7 +68,7 @@ public class App {
                     break;
                 }
                 case 5: {
-                    System.out.println("Existem " + Mercadinho.quantidadeProduto() + " em estoque");
+                    System.out.println("Existem " + mercadinho.getQuantidade() + " em estoque");
                     break;
                 }
                 case 6: {
@@ -75,12 +85,8 @@ public class App {
                     System.out.println("VALOR INVALIDO");
             }
             System.out.println("\n\n");
-        }
-
     }
-
-   
-
+    
     private static void limpaTela(){
         for(int x=0; x<=10; x++) System.out.println("");
     }

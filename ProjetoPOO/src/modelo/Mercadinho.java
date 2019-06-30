@@ -1,123 +1,145 @@
-
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import modelo.*;
 
 public class Mercadinho implements Cadastro {
+
     private final String nome;
-    private final Proprietario nome_proprietario;
-       private final Produto[] estoque;
-      private static int Q;
-    
-      public Mercadinho(String nome, Proprietario proprietario){
-          this.nome=nome;
-          this.estoque=new Produto[1000];
-          this.nome_proprietario=proprietario;
-      }
-      
-      public String getNome(){
-          return this.nome;
-      }
-public Proprietario getNome_proprietario(){
-    return this.nome_proprietario;
-}
-public Produto[] getEstoque(){
-    return this.estoque;
-}
-public boolean adicionar(Produto produto) {
- if(Q <1000){
-     this.estoque[Q]=produto;
-     ++Q;
-     return true;
- }else{
-     return false;
- }
-}
-    @Override
-    public Produto consultar(int codigo){
-    if (Q >0){
-        for(int x = 0; x < Q; ++x) {
-            if(this.estoque[x].getCodigo()==codigo){
-                return this.estoque[x];
-            }
-        }
-        return null;
-    }else{
-        return null;
+    private final Proprietario proprietario;
+    private final ArrayList<Produto> estoque;
+    private static int quantidade;
+
+    public Mercadinho(String nome, Proprietario proprietario) {
+        this.nome = nome;
+        this.proprietario = proprietario;
+        estoque = new ArrayList<>(1000);
+        quantidade = estoque.size();
+        
     }
-}
-    @Override
-    public boolean alterar(Produto produto) {
-    for(int x = 0; x < Q; ++x) {
-        if (this.estoque[x].getCodigo()==produto.getCodigo()){
-            this.estoque[x]=produto;
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public Proprietario getproprietario() {
+        return proprietario;
+    }
+
+    public ArrayList<Produto> getEstoque() {
+        return this.estoque;
+    }
+    public boolean isLimpo(){
+        if(estoque.isEmpty()){
             return true;
         }
+        return false;
     }
-    return false;
-}
+
+    public boolean adicionar(Produto produto) {
+        if (quantidade < 1000) {
+            estoque.add(produto);
+            ++quantidade;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Produto consultar(int codigo) {
+        if (quantidade > 0) {
+            for (int x = 0; x < quantidade; ++x) {
+                if (estoque.get(x).getCodigo() == codigo) {
+                    return estoque.get(x);
+                }
+            }
+            return null;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public boolean alterar(Produto produto) {
+        for (int x = 0; x < quantidade; ++x) {
+            if (estoque.get(x).getCodigo() == produto.getCodigo()) {
+                estoque.add(x, produto);
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public boolean remover(int codigo) {
-    for(int x=0; x< Q; ++x){
-        if(this.estoque[x].getCodigo()==codigo && x< Q){
-    this.estoque[x]=this.estoque[x+1];
-    --Q;
-    return true;
+        for (int x = 0; x < quantidade; x++) {
+            
+            if (estoque.get(x).getCodigo() == codigo) {
+                estoque.remove(x);
+                quantidade--;
+                return true;
+            }
+            
         }
-}
-    return false;
-}
+        return false;
+    }
+
     @Override
-    public int quantidade(){
-    return Q;
-}
+    public int quantidade() {
+        return quantidade;
+    }
+
     @Override
-    public double placmercadoria(){
-    double preco = 0.0D;
-    Produto[] varA=this.estoque;
-    int varB=varA.length;
+    public double placmercadoria() {
+        double preco = 0.0D;
+
+        for (int indice = 0; indice < estoque.size(); ++indice) {
+            Produto produto = estoque.get(indice);
+            preco += produto.getPreco();
+        }
+        return preco;
+    }
+
+    @Override
+    public Produto produtoold() {
+        return null;
+    }
+
+    @Override
+    public Produto[] vencido() {
+        return new Produto[0];
+    }
     
-     for(int varC = 0; varC < varB; ++varC) {
-       Produto p = varA[varC];
-            preco += p.getPreco();
-    }
-return preco;
-}
     @Override
-    public Produto produtoold(){
-    return null;
-}
-    @Override
-    public Produto[] vencido(){
-    return new Produto[0];
-}
-    @Override
-    public String toString(){
-return "Supermercado{nome='" + this.nome + '\'' + ", proprietario='" + this.nome_proprietario + '\'' + ", estoque=" + Arrays.toString(this.estoque) + '}';
-}
-
-    @Override
-    public boolean incluirProduto(Produto var1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String toString() {
+        return "Supermercado{\n    "
+                + "nome= '" + nome + '\'' + ",\n    "
+                + "proprietario= '" + proprietario + '\'' + ",\n    "
+                + "estoque= " + estoque.toString() + "\n"
+                + "}";
     }
 
-    public int Q() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public boolean incluirProduto(Produto produto) {
+        return estoque.add(produto);
+    }
+    
+    public int getQuantidade() {
+        return estoque.size();
     }
 
-    public boolean removerestoque(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean removerEstoque(int codigo) {
+        Produto produto = new Produto(codigo);
+        return estoque.remove(produto);
     }
 
     public Produto consultarProduto(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return estoque.get(codigo - 1);
     }
 
-    public String quantidadeProduto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getProprietario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Proprietario getProprietario() {
+        return proprietario;
     }
 }

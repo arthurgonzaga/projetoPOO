@@ -1,8 +1,9 @@
-
 package modelo;
+
 import java.time.LocalDate;
 
 public class Proprietario {
+
     private String nome;
     private LocalDate dataNascimento;
     private String sexo;

@@ -4,19 +4,26 @@
  * and open the template in the editor.
  */
 package modelo;
+
 import java.time.LocalDate;
-public class Produto {    
+
+public class Produto {
+
     private int codigo;
     private String descricao;
-    private LocalDate data_de_fabricacao;
-    private LocalDate data_de_validade;
+    private LocalDate dataDeFabricacao;
+    private LocalDate dataDeValidade;
     private double preco;
 
-    public Produto(int codigo, String descricao, LocalDate dataFabricacao, LocalDate dataValidade, double preco) {
+    public Produto(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public Produto(int codigo, String descricao, LocalDate dataDeFabricacao, LocalDate dataDeValidade, double preco) {
         this.codigo = codigo;
         this.descricao = descricao;
-        this.data_de_fabricacao = dataFabricacao;
-        this.data_de_validade = dataValidade;
+        this.dataDeFabricacao = dataDeFabricacao;
+        this.dataDeValidade = dataDeValidade;
         this.preco = preco;
     }
 
@@ -36,24 +43,24 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public LocalDate getData_de_fabricacao() {
-        return this.data_de_fabricacao;
+    public LocalDate getDataDeFabricacao() {
+        return dataDeFabricacao;
     }
 
-    public void setData_de_fabricacao(LocalDate data_de_fabricacao) {
-        this.data_de_fabricacao = data_de_fabricacao;
+    public void setDataDeFabricacao(LocalDate dataDeFabricacao) {
+        this.dataDeFabricacao = dataDeFabricacao;
     }
 
-    public LocalDate getData_de_validade() {
-        return this.data_de_validade;
+    public LocalDate getDataDeValidade() {
+        return this.dataDeValidade;
     }
 
-    public void setData_de_validade(LocalDate data_de_validade) {
-        this.data_de_validade = data_de_validade;
+    public void setDataDeValidade(LocalDate dataDeValidade) {
+        dataDeValidade = dataDeValidade;
     }
 
     public double getPreco() {
-        return this.preco;
+        return preco;
     }
 
     public void setPreco(double preco) {
@@ -62,9 +69,12 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{codigo=" + this.codigo + ", descricao='" + this.descricao + '\'' + ", dataFabricacao=" + this.data_de_fabricacao + ", dataValidade=" + this.data_de_validade + ", preco=" + this.preco + '}';
+        return "Produto{\n    "
+                + "codigo= " + codigo + ",\n    "
+                + "descricao= '" + descricao + '\'' + ",\n    "
+                + "dataFabricacao= " + dataDeFabricacao + ",\n    "
+                + "dataValidade= " + dataDeValidade + ",\n    "
+                + "preco= " + preco + "\n}";
     }
-  
-public static void main (String[] args) {
-}
+
 }
