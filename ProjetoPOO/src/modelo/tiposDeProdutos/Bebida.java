@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modelo.tiposDeProdutos;
+
 import java.time.LocalDate;
+import modelo.Produto;
 
 public class Bebida extends Produto {
+
     private int graduacaoAlocolica;
 
     public Bebida(int codigo, String descricao, LocalDate dataFabricacao, LocalDate dataValidade, double preco, int graduacaoAlocolica) {
@@ -22,4 +25,3 @@ public class Bebida extends Produto {
         this.graduacaoAlocolica = graduacaoAlocolica;
     }
 }
-

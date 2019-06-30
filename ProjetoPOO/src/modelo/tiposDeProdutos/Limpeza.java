@@ -1,28 +1,32 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modelo.tiposDeProdutos;
 
 import java.time.LocalDate;
+import modelo.Produto;
 
 /**
  *
  * @author weslley
  */
-public class Limpeza extends Produto{
+public class Limpeza extends Produto {
+
     private boolean nocivo;
 
-      public Limpeza(int codigo, String descricao, LocalDate dataFabricacao,
-                   LocalDate dataValidade, double preco, boolean nocivo) {
+    public Limpeza(int codigo, String descricao, LocalDate dataFabricacao,
+            LocalDate dataValidade, double preco, boolean nocivo) {
         super(codigo, descricao, dataFabricacao, dataValidade, preco);
         this.nocivo = nocivo;
     }
-    public boolean isToxico(){
+
+    public boolean isToxico() {
         return this.nocivo;
     }
-    public void setToxico(boolean Toxico){
-        this.nocivo=nocivo;
+
+    public void setToxico(boolean Toxico) {
+        this.nocivo = nocivo;
     }
 }

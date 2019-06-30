@@ -3,31 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modelo.tiposDeProdutos;
 
 import java.time.LocalDate;
+import modelo.Produto;
 
 /**
  *
  * @author weslley
  */
 public class Alimento extends Produto {
-private String tipo;
+
+    private String tipo;
     private final String classificacao;
 
     public Alimento(int codigo, String descricao, LocalDate dataFabricacao,
-                    LocalDate dataValidade, double preco, String classificacao) {
+            LocalDate dataValidade, double preco, String classificacao) {
         super(codigo, descricao, dataFabricacao, dataValidade, preco);
         this.classificacao = classificacao;
     }
 
- public String getTipo() {
+    public String getTipo() {
         return this.tipo;
     }
-     public void setTipo(String tipo) {
+
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }
-
-
-
